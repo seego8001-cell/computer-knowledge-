@@ -1,0 +1,21 @@
+<script>
+
+function openLesson(lesson){
+
+    if(lesson === "computer"){
+
+        window.location.href =
+        "computer.html";
+
+    }
+
+    if(lesson === "network"){
+
+        window.location.href =
+        "network.html";
+
+    }
+
+}
+
+</script>
