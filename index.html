@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ប្រព័ន្ធឌីជីថល</title>
+
+<style>
+
+/* =========================
+   GENERAL
+========================= */
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,"Noto Sans Khmer",sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    background:linear-gradient(135deg,#071a45,#0d4ca8);
+    color:white;
+    padding:12px 18px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 15px rgba(0,0,0,.25);
+}
+
+.nav{
+    max-width:1150px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.brand img{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+}
+
+nav button{
+    border:none;
+    background:transparent;
+    color:white;
+    padding:10px 13px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+nav button:hover,
+nav button.active{
+    background:rgba(255,255,255,.2);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    max-width:1150px;
+    margin:25px auto;
+    padding:30px 22px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071c4c,
+            #1264ce
+        );
+
+    color:white;
+
+    display:grid;
+    grid-template-columns:160px 1fr;
+
+    gap:25px;
+    align-items:center;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.15);
+}
+
+.hero img{
+    width:150px;
+    height:150px;
+    object-fit:contain;
+    background:#000;
+    border-radius:20px;
+    padding:8px;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    font-size:34px;
+}
+
+.hero p{
+    line-height:1.8;
+    margin:7px 0;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:0 16px;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search{
+    display:flex;
+    gap:10px;
+    margin:20px 0;
+}
+
+.search input{
+    flex:1;
+    padding:14px;
+
+    border:
+        1px solid #d8dfeb;
+
+    border-radius:12px;
+
+    outline:none;
+
+    font-size:15px;
+
+    background:white;
+}
+
+.search input:focus{
+    border-color:#1264ce;
+}
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+    margin:20px 0;
+}
+
+.stat{
+    background:white;
+    padding:18px;
+    border-radius:15px;
+
+    border:
+        1px solid #e1e7f0;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,.04);
+}
+
+.stat b{
+    display:block;
+    font-size:25px;
+    color:#0b55b7;
+    margin-bottom:5px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:30px 0 15px;
+}
+
+.section-title h2{
+    margin:0;
+}
+
+/* =========================
+   BOOK GRID
+========================= */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+/* =========================
+   BOOK
+========================= */
+
+.book{
+    background:white;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    border:
+        1px solid #e0e6ef;
+
+    box-shadow:
+        0 3px 12px rgba(0,0,0,.06);
+
+    transition:.2s;
+}
+
+.book:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.12);
+}
+
+/* =========================
+   BOOK COVER
+========================= */
+
+.cover{
+    height:190px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #09235b,
+            #1769d3
+        );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    padding:15px;
+}
+
+.cover-icon{
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+/* =========================
+   BOOK BODY
+========================= */
+
+.book-body{
+    padding:15px;
+}
+
+.book h3{
+    font-size:17px;
+    margin:
+        0 0 8px;
+}
+
+.meta{
+    color:#667085;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.tag{
+    display:inline-block;
+
+    margin-top:10px;
+
+    background:#eaf2ff;
+
+    color:#0b55b7;
+
+    border-radius:20px;
+
+    padding:
+        5px 10px;
+
+    font-size:12px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.actions{
+    display:flex;
+    gap:7px;
+    margin-top:12px;
+}
+
+.btn{
+    border:none;
+
+    border-radius:9px;
+
+    padding:
+        9px 12px;
+
+    cursor:pointer;
+
+    font-size:13px;
+}
+
+.primary{
+    background:#0b55b7;
+    color:white;
+}
+
+.primary:hover{
+    background:#083f8a;
+}
+
+.light{
+    background:#edf2f8;
+    color:#17324f;
+}
+
+.light:hover{
+    background:#dce6f2;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrap{
+    overflow:auto;
+}
+
+table{
+    width:100%;
+
+    border-collapse:
+        collapse;
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+}
+
+th,
+td{
+    padding:13px;
+
+    border-bottom:
+        1px solid #e8edf4;
+
+    text-align:left;
+}
+
+th{
+    background:#edf4ff;
+    color:#123b70;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin-top:50px;
+
+    background:#071a45;
+
+    color:#dce7f7;
+
+    padding:28px;
+
+    text-align:center;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.7);
+
+    z-index:2000;
+
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.modal-box{
+    background:white;
+
+    max-width:650px;
+
+    width:100%;
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    border-radius:18px;
+
+    padding:22px;
+}
+
+.close{
+    float:right;
+
+    border:none;
+
+    background:#eee;
+
+    border-radius:8px;
+
+    padding:7px 11px;
+
+    cursor:pointer;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    .grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .nav{
+        align-items:flex-start;
+    }
+
+    .brand span{
+        display:none;
+    }
+
+    nav button{
+        font-size:12px;
+        padding:8px;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero img{
+        margin:auto;
+    }
+
+    .hero h1{
+        font-size:26px;
+    }
+
+    .grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .cover{
+        height:160px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="nav">
+
+    <div class="brand">
+
+        <img
+            src="assets/logo.IMG_20260925_122226_328.png"
+            alt="Logo"
+        >
+
+        <span>
+            ប្រព័ន្ធឌីជីថល
+        </span>
+
+    </div>
+
+
+    <nav>
+
+        <button
+            class="active"
+            onclick="showPage('home',this)"
+        >
+            🏠 ទំព័រដើម
+        </button>
+
+        <button
+            onclick="showPage('books',this)"
+        >
+            📚 សៀវភៅ
+        </button>
+
+        <button
+            onclick="showPage('categories',this)"
+        >
+            🗂️ ប្រភេទ
+        </button>
+
+        <button
+            onclick="showPage('records',this)"
+        >
+            📝 កំណត់ត្រា
+        </button>
+
+        <button
+            onclick="showPage('about',this)"
+        >
+            ℹ️ អំពីប្រព័ន្ធ
+        </button>
+
+    </nav>
+
+</div>
+
+</header>
+
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section
+    id="home"
+    class="page active"
+>
+
+
+<div class="hero">
+
+    <img
+        src="assets/logo.png"
+        alt="Logo"
+    >
+
+    <div>
+
+        <h1>
+            ប្រព័ន្ធឌីជីថល
+        </h1>
+
+        <p>
+            បណ្ណាល័យចំណេះដឹងឌីជីថល
+            សម្រាប់ប្រមូលផ្ដុំ
+            និងរៀនអំពីកុំព្យូទ័រ
+            និងប្រព័ន្ធកុំព្យូទ័រ។
+        </p>
+
+        <p>
+            📚 សៀវភៅ •
+            💻 កុំព្យូទ័រ •
+            🌐 បណ្ដាញ •
+            🔐 សុវត្ថិភាព •
+            🤖 AI
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<div class="container">
+
+
+    <!-- SEARCH -->
+
+    <div class="search">
+
+        <input
+            id="homeSearch"
+            type="text"
+            placeholder="🔎 ស្វែងរកសៀវភៅ ឬចំណេះដឹង..."
+            oninput="searchBooks(this.value)"
+        >
+
+    </div>
+
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <b id="bookCount">
+                8
+            </b>
+
+            សៀវភៅ
+
+        </div>
+
+
+        <div class="stat">
+
+            <b>
+                8
+            </b>
+
+            ប្រភេទ
+
+        </div>
+
+
+        <div class="stat">
+
+            <b>
+                24/7
+            </b>
+
+            អាចប្រើប្រាស់
+
+        </div>
+
+
+        <div class="stat">
+
+            <b>
+                🌐
+            </b>
+
+            ចំណេះដឹងពិភពលោក
+
+        </div>
+
+    </div>
+
+
+
+    <!-- BOOKS -->
+
+    <div class="section-title">
+
+        <h2>
+            📚 សៀវភៅចំណេះដឹង
+        </h2>
+
+        <button
+            class="btn light"
+            onclick="showPage('books')"
+        >
+            មើលទាំងអស់ →
+        </button>
+
+    </div>
+
+
+    <div
+        id="homeGrid"
+        class="grid"
+    ></div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     BOOKS
+========================= -->
+
+<section
+    id="books"
+    class="page"
+>
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            📚 បណ្ណាល័យសៀវភៅ
+        </h2>
+
+    </div>
+
+
+    <div class="search">
+
+        <input
+            type="text"
+            placeholder="🔎 ស្វែងរកសៀវភៅ..."
+            oninput="searchBooks(this.value)"
+        >
+
+    </div>
+
+
+    <div
+        id="bookGrid"
+        class="grid"
+    ></div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section
+    id="categories"
+    class="page"
+>
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            🗂️ ប្រភេទចំណេះដឹង
+        </h2>
+
+    </div>
+
+
+    <div
+        id="categoryGrid"
+        class="grid"
+    ></div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     RECORDS
+========================= -->
+
+<section
+    id="records"
+    class="page"
+>
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            📝 កំណត់ត្រាច្បាស់លាស់
+        </h2>
+
+    </div>
+
+
+    <p>
+        ផ្នែកនេះបង្ហាញព័ត៌មាន
+        និងកំណត់ត្រារបស់សៀវភៅ
+        ដែលមាននៅក្នុងប្រព័ន្ធ។
+    </p>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        លេខ
+                    </th>
+
+                    <th>
+                        ឈ្មោះសៀវភៅ
+                    </th>
+
+                    <th>
+                        ប្រភេទ
+                    </th>
+
+                    <th>
+                        ឆ្នាំ
+                    </th>
+
+                    <th>
+                        ស្ថានភាព
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody
+                id="recordBody"
+            ></tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+    id="about"
+    class="page"
+>
+
+<div class="container">
+
+    <div
+        class="hero"
+        style="margin-top:0"
+    >
+
+        <img
+            src="assets/logo.png"
+            alt="Logo"
+        >
+
+        <div>
+
+            <h1>
+                អំពីប្រព័ន្ធឌីជីថល
+            </h1>
+
+            <p>
+                ប្រព័ន្ធឌីជីថល
+                គឺជាគម្រោងបណ្ណាល័យ
+                សម្រាប់ប្រមូលផ្ដុំ
+                និងរៀបចំចំណេះដឹង
+                ទាក់ទងនឹងកុំព្យូទ័រ
+                និងបច្ចេកវិទ្យា។
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="stat"
+        style="margin-top:20px"
+    >
+
+        <b>
+            📌 ចំណាំ
+        </b>
+
+        Website នេះអាចពង្រីកបន្ថែមជា
+        Database Online,
+        Login,
+        Admin,
+        Upload PDF,
+        រូបភាព,
+        សៀវភៅ,
+        និងប្រព័ន្ធកត់ត្រា
+        នៅជំហានបន្ទាប់។
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+© 2026
+ប្រព័ន្ធឌីជីថល
+
+<br>
+
+Computer &
+Computer Systems
+Knowledge Library
+
+</footer>
+
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+    id="modal"
+    class="modal"
+    onclick="if(event.target===this)closeModal()"
+>
+
+<div class="modal-box">
+
+    <button
+        class="close"
+        onclick="closeModal()"
+    >
+        ✕
+    </button>
+
+    <div
+        id="modalContent"
+    ></div>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================
+   DATABASE សៀវភៅគំរូ
+========================================= */
+
+const books = [
+
+    {
+        id:1,
+
+        title:
+        "មូលដ្ឋានកុំព្យូទ័រ",
+
+        cat:
+        "មូលដ្ឋាន",
+
+        icon:
+        "💻",
+
+        desc:
+        "សិក្សាអំពី Hardware, Software, CPU, RAM, Storage, Input និង Output។",
+
+        year:
+        "2026"
+    },
+
+
+    {
+        id:2,
+
+        title:
+        "ប្រព័ន្ធប្រតិបត្តិការ",
+
+        cat:
+        "Operating System",
+
+        icon:
+        "⚙️",
+
+        desc:
+        "ស្វែងយល់អំពី Windows, Linux, Android និងតួនាទីរបស់ Operating System។",
+
+        year:
+        "2026"
+    },
+
+
+    {
+        id:3,
+
+        title:
+        "បណ្ដាញកុំព្យូទ័រ",
+
+        cat:
+        "Networking",
+
+        icon:
+        "🌐",
+
+        desc:
+        "LAN, WAN, IP Address, Router, Wi-Fi, DNS និង Internet។",
+
+        year:
+        "2026"
+    },
+
+
+    {
+        id:4,
+
+        title:
+        "Cybersecurity",
+
+        cat:
+        "សុវត្ថិភាព",
+
+        icon:
+        "🔐",
+
+        desc:
+        "សិក្សាអំពី Password, Malware, Phishing និងសុវត្ថិភាពឌីជីថល។",
+
+        year:
+        "2026"
+    },
+
+
+    {
+        id:5,
+
+        title:
+        "Database",
+
+        cat:
+        "ទិន្នន័យ",
+
+        icon:
+        "🗄️",
+
+        desc:
+        "សិក្សាអំពី Database, Table, Record, Query និងការរៀបចំទិន្នន័យ។",
+
+        year:
+        "2026"
+    },
+
+
+    {
+        id:6,
+
+        title:
+        "Programming",
+
+        cat:
+        "កម្មវិធី",
+
+        icon:
+        "💻",
+
+        desc:
+        "HTML, CSS, JavaScript និងគំនិតមូលដ្ឋាននៃការសរសេរកម្មវិធី។",
+
+        year:
+        "2026"
+    },
+
+
+    {
+        id:7,
+
+        title:
+        "Artificial Intelligence",
+
+        cat:
+        "AI",
+
+        icon:
+        "🤖",
+
+        desc:
+        "សិក្សាអំពី AI, Machine Learning និងការប្រើប្រាស់ AI។",
+
+        year:
+        "2026"
+    },
+
+
+    {
+        id:8,
+
+        title:
+        "Computer Systems",
+
+        cat:
+        "ប្រព័ន្ធកុំព្យូទ័រ",
+
+        icon:
+        "🖥️",
+
+        desc:
+        "ការធ្វើការរួមគ្នារបស់ Hardware, Software, Network និង Data។",
+
+        year:
+        "2026"
+    }
+
+];
+
+
+
+/* =========================================
+   GET CATEGORIES
+========================================= */
+
+const categories = [
+
+    ...new Set(
+        books.map(
+            book => book.cat
+        )
+    )
+
+];
+
+
+
+/* =========================================
+   BOOK CARD
+========================================= */
+
+function createBookCard(book){
+
+    return `
+
+    <article class="book">
+
+        <div class="cover">
+
+            <div>
+
+                <div class="cover-icon">
+                    ${book.icon}
+                </div>
+
+                <strong>
+                    ${book.title}
+                </strong>
+
+                <div
+                    style="font-size:12px;margin-top:6px"
+                >
+                    ប្រព័ន្ធឌីជីថល
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="book-body">
+
+            <h3>
+                ${book.title}
+            </h3>
+
+            <div class="meta">
+                ${book.desc}
+            </div>
+
+
+            <span class="tag">
+                ${book.cat}
+            </span>
+
+
+            <div class="actions">
+
+                <button
+                    class="btn primary"
+                    onclick="openBook(${book.id})"
+                >
+                    📖 បើកសៀវភៅ
+                </button>
+
+                <button
+                    class="btn light"
+                    onclick="recordRead(${book.id})"
+                >
+                    📝 កត់ត្រា
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+    `;
+
+}
+
+
+
+/* =========================================
+   RENDER WEBSITE
+========================================= */
+
+function renderBooks(list = books){
+
+    document.getElementById(
+        "bookGrid"
+    ).innerHTML =
+        list
+        .map(createBookCard)
+        .join("");
+
+
+    document.getElementById(
+        "homeGrid"
+    ).innerHTML =
+        list
+        .slice(0,4)
+        .map(createBookCard)
+        .join("");
+
+
+    document.getElementById(
+        "bookCount"
+    ).textContent =
+        books.length;
+
+
+    document.getElementById(
+        "recordBody"
+    ).innerHTML =
+
+        books.map(
+            (book,index) => `
+
+            <tr>
+
+                <td>
+                    ${index + 1}
+                </td>
+
+                <td>
+                    ${book.title}
+                </td>
+
+                <td>
+                    ${book.cat}
+                </td>
+
+                <td>
+                    ${book.year}
+                </td>
+
+                <td>
+                    ✅ មានក្នុងប្រព័ន្ធ
+                </td>
+
+            </tr>
+
+            `
+        ).join("");
+
+
+    document.getElementById(
+        "categoryGrid"
+    ).innerHTML =
+
+        categories.map(
+            category => `
+
+            <article class="book">
+
+                <div class="cover">
+
+                    <div class="cover-icon">
+                        📁
+                    </div>
+
+                </div>
+
+
+                <div class="book-body">
+
+                    <h3>
+                        ${category}
+                    </h3>
+
+                    <div class="meta">
+
+                        ${
+                            books.filter(
+                                b =>
+                                b.cat === category
+                            ).length
+                        }
+
+                        សៀវភៅ
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <button
+                            class="btn primary"
+                            onclick="filterCategory('${category}')"
+                        >
+                            មើលសៀវភៅ
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            `
+        ).join("");
+
+}
+
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+function searchBooks(keyword){
+
+    keyword =
+        keyword
+        .toLowerCase()
+        .trim();
+
+
+    if(!keyword){
+
+        renderBooks(
+            books
+        );
+
+        return;
+    }
+
+
+    const results =
+        books.filter(
+            book =>
+
+            (
+                book.title +
+                book.cat +
+                book.desc
+            )
+            .toLowerCase()
+            .includes(keyword)
+        );
+
+
+    renderBooks(
+        results
+    );
+
+}
+
+
+
+/* =========================================
+   FILTER CATEGORY
+========================================= */
+
+function filterCategory(category){
+
+    show
